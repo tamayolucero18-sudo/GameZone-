@@ -266,7 +266,7 @@ $volver = 'index.php?' . http_build_query(array_filter([
 <?php endif; ?>
 
 <footer class="footer">
-  <p>GameZone — Cancún, México · Claves digitales originales</p>
+  <p>GameZone — Mérida, Yucatán · Claves digitales originales</p>
   <p>Proyecto demostrativo. Los precios y productos son simulados.</p>
 </footer>
 </body>

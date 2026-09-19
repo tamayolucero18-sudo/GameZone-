@@ -1,6 +1,12 @@
 <?php
 require __DIR__ . '/datos.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['accion'] ?? '') === 'borrar_historial') {
+    @file_put_contents(__DIR__ . '/pedidos.log', '');
+    header('Location: historial.php');
+    exit;
+}
+
 $historial = [];
 if (is_file(__DIR__ . '/pedidos.log')) {
     foreach (file(__DIR__ . '/pedidos.log', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $linea) {
@@ -82,6 +88,10 @@ if (is_file(__DIR__ . '/pedidos.log')) {
     <?php endif; ?>
 
     <div class="historial__footer">
+      <form method="post" action="historial.php" class="historial__actions">
+        <input type="hidden" name="accion" value="borrar_historial">
+        <button class="btn btn--danger" type="submit">Eliminar historial</button>
+      </form>
       <a class="btn btn--primary" href="index.php">Volver a la página principal</a>
     </div>
   </main>
