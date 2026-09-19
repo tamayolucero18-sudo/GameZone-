@@ -24,16 +24,6 @@ $visibles = array_filter($JUEGOS, function ($j) use ($categoria, $busqueda) {
 });
 
 $t = totales($JUEGOS);
-$historial = [];
-if (is_file(__DIR__ . '/pedidos.log')) {
-    foreach (file(__DIR__ . '/pedidos.log', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $linea) {
-        $pedido = json_decode($linea, true);
-        if (is_array($pedido)) {
-            $historial[] = $pedido;
-        }
-    }
-    $historial = array_reverse($historial);
-}
 // URL actual sin los parámetros de modal, para los formularios POST.
 $volver = 'index.php?' . http_build_query(array_filter([
     'cat' => $categoria !== 'Todos' ? $categoria : null,
@@ -61,7 +51,7 @@ $volver = 'index.php?' . http_build_query(array_filter([
       <a href="index.php">Inicio</a>
       <a href="<?= url([], 'index.php', '#catalogo') ?>">Catálogo</a>
       <a href="<?= url([], 'index.php', '#categorias') ?>">Categorías</a>
-      <a href="<?= url([], 'index.php', '#historial') ?>">Historial</a>
+      <a href="historial.php">Historial</a>
     </nav>
 
     <form class="search" method="get" action="index.php" role="search">
@@ -147,56 +137,6 @@ $volver = 'index.php?' . http_build_query(array_filter([
   </div>
   <?php endif; ?>
 </main>
-
-<!-- ============ HISTORIAL ============ -->
-<section class="historial" id="historial">
-  <div class="catalogo__head">
-    <h2 class="section-title">Historial</h2>
-    <p class="catalogo__count"><?= count($historial) ?> compras registradas</p>
-  </div>
-
-  <?php if (!$historial): ?>
-    <p class="vacio">Todavía no hay compras registradas en este historial.</p>
-  <?php else: ?>
-    <div class="historial__list">
-      <?php foreach ($historial as $pedido): ?>
-        <article class="historial__item">
-          <div class="historial__top">
-            <div>
-              <p class="historial__label">Cliente</p>
-              <h3><?= e($pedido['cliente']['nombre'] ?? 'Cliente') ?></h3>
-            </div>
-            <span class="historial__folio"><?= e($pedido['folio'] ?? 'Sin folio') ?></span>
-          </div>
-
-          <p class="historial__fecha"><?= e(date('d/m/Y H:i', strtotime($pedido['fecha'] ?? 'now'))) ?></p>
-
-          <ul class="historial__lineas">
-            <?php foreach ($pedido['lineas'] ?? [] as $linea): ?>
-              <li>
-                <span><?= e($linea['nombre'] ?? 'Juego') ?> × <?= (int)($linea['cantidad'] ?? 1) ?></span>
-                <strong><?= money((float)($linea['importe'] ?? 0)) ?></strong>
-              </li>
-            <?php endforeach; ?>
-          </ul>
-
-          <div class="historial__totales">
-            <span>Subtotal</span>
-            <strong><?= money((float)($pedido['totales']['subtotal'] ?? 0)) ?></strong>
-          </div>
-          <div class="historial__totales">
-            <span>IVA</span>
-            <strong><?= money((float)($pedido['totales']['iva'] ?? 0)) ?></strong>
-          </div>
-          <div class="historial__totales historial__totales--final">
-            <span>Total</span>
-            <strong><?= money((float)($pedido['totales']['total'] ?? 0)) ?></strong>
-          </div>
-        </article>
-      <?php endforeach; ?>
-    </div>
-  <?php endif; ?>
-</section>
 
 <!-- ============ MODAL: DETALLE DEL JUEGO ============ -->
 <?php if ($juegoAbierto): $j = $JUEGOS[$juegoAbierto]; ?>
