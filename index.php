@@ -84,7 +84,7 @@ $volver = 'index.php?' . http_build_query(array_filter([
     </ul>
   </div>
   <div class="hero__art" aria-hidden="true">
-    <img src="https://placehold.co/900x1100/1E1B36/FF2D75?text=GAMEZONE" alt="">
+    <img src="Imagenes/GAMEZONE.jpg" alt="GameZone">
   </div>
 </section>
 
