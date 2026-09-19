@@ -47,8 +47,14 @@ function money(float $n): string {
     return '$' . number_format($n, 2) . ' MXN';
 }
 
-/** Genera la portada placeholder de un juego. */
+/** Genera la portada de un juego, usando la imagen local cuando existe. */
 function portada(string $nombre, string $color = 'FF2D75'): string {
+    $nombreNormalizado = trim($nombre);
+
+    if (strcasecmp($nombreNormalizado, 'Neon Vanguard') === 0) {
+        return 'Imagenes/Neon%20Vanguard.jpg';
+    }
+
     return 'https://placehold.co/600x800/1E1B36/' . $color . '?text=' . rawurlencode($nombre);
 }
 
