@@ -21,7 +21,7 @@ Nos centramos en ofrecer una experiencia de juego pura y simple, sin sistemas co
   4  => ['nombre'=>'Isla Mareaverde',   'categoria'=>'Aventura',   'plataforma'=>' Nintendo Switch, PC', 'precio'=>899,  'anio'=>2026, 'estudio'=>'Coralwave',         'desc'=>'Es un relajante simulador de vida y granja de estilo cozy art en 2D. Los jugadores asumen el papel de Ana, una joven que gestiona su propio terreno frente a la playa, cultiva vegetales, cuida flores y recolecta recursos costeros. El objetivo principal es prosperar en la agricultura mientras se interactúa con los habitantes y comercios locales en el cercano Puerto Mareaverde.'],
   5  => ['nombre'=>'Fire Fire',   'categoria'=>'Estrategia', 'plataforma'=>'iOS y Android',     'precio'=>749,  'anio'=>2017, 'estudio'=>'vietnamita 111dots Studio y publicado por la empresa de Singapur, Garena',     'desc'=>'Su dinámica consiste en partidas rápidas de aproximadamente 10 minutos en las que 50 jugadores caen en paracaídas sobre una isla remota. El objetivo principal es explorar el mapa, conseguir armas y equipamiento médico, y eliminar a los rivales mientras el área de juego se reduce constantemente, todo para convertirse en el último sobreviviente.'],
   6  => ['nombre'=>'Elden Ring',   'categoria'=>'Acción',     'plataforma'=>'PS5, PS4, PC, XBOX Series X/S, XBOX ONE',    'precio'=>1033, 'anio'=>2022, 'estudio'=>'FromSoftware',           'desc'=>'Elden Ring nos llevará a un mundo convulso, complejo y sangriento. En esta ocasión, el equipo japonés ha aumentado la escala del título, trasladando y depurando su conocida jugabilidad a una nueva dimensión. El nuevo universo del videojuego será mucho más grande, más que ningún otro juego anterior de FromSoftware, con extensiones de terreno llenas de enemigos, criaturas extrañas y desafíos.'],
-  7  => ['nombre'=>'Corona de Ceniza',  'categoria'=>'RPG',        'plataforma'=>'PC',     'precio'=>1099, 'anio'=>2022, 'estudio'=>'Grey Lantern',      'desc'=>'RPG táctico con seis finales y party personalizable.'],
+  7  => ['nombre'=>'The Witcher 3: Wild Hunt',  'categoria'=>'RPG',        'plataforma'=>'PC, PS4, PS5, Xbox One',     'precio'=>860, 'anio'=>2015, 'estudio'=>'CD Projekt RED.',      'desc'=>'El juego te pone en la piel de Geralt de Rivia, un cazador de monstruos mercenario conocido como "brujo". En un vasto continente de fantasía oscura devastado por la guerra e inspirado en el folclore eslavo, tu misión principal es seguir el rastro de Ciri, la niña de la profecía. Ella representa un arma viviente capaz de alterar el destino del mundo, mientras es perseguida por una orden de espectros conocida como la Cacería Salvaje (Wild Hunt).'],
   8  => ['nombre'=>'Liga Estelar FC',   'categoria'=>'Deportes',   'plataforma'=>'PS5',    'precio'=>1399, 'anio'=>2026, 'estudio'=>'Kickpoint',         'desc'=>'Fútbol arcade con ligas en línea y modo carrera.'],
   9  => ['nombre'=>'Ruta 88',           'categoria'=>'Aventura',   'plataforma'=>'Xbox',   'precio'=>649,  'anio'=>2023, 'estudio'=>'Slowlight',         'desc'=>'Road trip narrativo por carreteras olvidadas.'],
   10 => ['nombre'=>'Imperio de Hierro', 'categoria'=>'Estrategia', 'plataforma'=>'PC',     'precio'=>849,  'anio'=>2024, 'estudio'=>'Forgeworks',        'desc'=>'Construye, comercia y defiende una civilización industrial.'],
@@ -73,6 +73,10 @@ function portada(string $nombre, string $color = 'FF2D75'): string {
 
     if (strcasecmp($nombreNormalizado, 'Elden Ring') === 0) {
         return 'Imagenes/elden-ring.jpg';
+    }
+
+    if (strcasecmp($nombreNormalizado, 'The Witcher 3: Wild Hunt') === 0) {
+        return 'Imagenes/The%20Witcher%203_Wild%20Hunt.jpg';
     }
 
     return 'https://placehold.co/600x800/1E1B36/' . $color . '?text=' . rawurlencode($nombre);
