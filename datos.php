@@ -90,7 +90,18 @@ function portada(string $nombre, string $color = 'FF2D75'): string {
     if (strcasecmp($nombreNormalizado, 'Bloodborne') === 0) {
         return 'Imagenes/Bloodborne.jpg';
     }
-
+    if (strcasecmp($nombreNormalizado, 'Bosque de Hilos') === 0) {
+        return 'Imagenes/Bosque%20de%20Hilos.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Dinastía Arcana') === 0) {
+        return 'Imagenes/Dinastia%20Arcana.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Imperio de Hierro') === 0) {
+        return 'Imagenes/Imperio%20de%20Hierro.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Frontera Roja') === 0) {
+        return 'Imagenes/Frontera%20Roja.jpg';
+    }
     return 'https://placehold.co/600x800/1E1B36/' . $color . '?text=' . rawurlencode($nombre);
 }
 
