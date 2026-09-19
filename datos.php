@@ -19,7 +19,7 @@ Nos centramos en ofrecer una experiencia de juego pura y simple, sin sistemas co
   2  => ['nombre'=>'Ashen Kingdoms',    'categoria'=>'RPG',        'plataforma'=>'PC (Windows, macOS y Linux)',    'precio'=>1499, 'anio'=>2024, 'estudio'=>'Grey Lantern',      'desc'=>'Es una aventura RPG hecha a mano que transforma la experiencia base de Minecraft. Está completamente diseñada en torno a la exploración de nuevas dimensiones, progresión profunda de personajes, forja de equipamiento poderoso, recolección de reliquias antiguas y el enfrentamiento contra imponentes jefes y criaturas legendarias'],
   3  => ['nombre'=>'Turbo Circuit',   'categoria'=>'Deportes',   'plataforma'=>'Famicom Disk System (Nintendo).',   'precio'=>999,  'anio'=>1987, 'estudio'=>'Nintendo / HAL Laboratory',    'desc'=>' Es un circuito ambientado en una zona desértica. Su dificultad radica en que está compuesto casi en su totalidad por curvas cerradas en zigzag de 90°, con giros ocasionales de 45° y 135° que ponen a prueba los reflejos del jugador'],
   4  => ['nombre'=>'Isla Mareaverde',   'categoria'=>'Aventura',   'plataforma'=>' Nintendo Switch, PC', 'precio'=>899,  'anio'=>2026, 'estudio'=>'Coralwave',         'desc'=>'Es un relajante simulador de vida y granja de estilo cozy art en 2D. Los jugadores asumen el papel de Ana, una joven que gestiona su propio terreno frente a la playa, cultiva vegetales, cuida flores y recolecta recursos costeros. El objetivo principal es prosperar en la agricultura mientras se interactúa con los habitantes y comercios locales en el cercano Puerto Mareaverde.'],
-  5  => ['nombre'=>'Dominio Táctico',   'categoria'=>'Estrategia', 'plataforma'=>'PC',     'precio'=>749,  'anio'=>2024, 'estudio'=>'Hexline Games',     'desc'=>'Estrategia por turnos sobre mapas hexagonales modulares.'],
+  5  => ['nombre'=>'Fire Fire',   'categoria'=>'Estrategia', 'plataforma'=>'iOS y Android',     'precio'=>749,  'anio'=>2017, 'estudio'=>'vietnamita 111dots Studio y publicado por la empresa de Singapur, Garena',     'desc'=>'Su dinámica consiste en partidas rápidas de aproximadamente 10 minutos en las que 50 jugadores caen en paracaídas sobre una isla remota. El objetivo principal es explorar el mapa, conseguir armas y equipamiento médico, y eliminar a los rivales mientras el área de juego se reduce constantemente, todo para convertirse en el último sobreviviente.'],
   6  => ['nombre'=>'Cazador de Ecos',   'categoria'=>'Acción',     'plataforma'=>'PS5',    'precio'=>1299, 'anio'=>2025, 'estudio'=>'Nocturn',           'desc'=>'Acción en tercera persona con combate basado en sonido.'],
   7  => ['nombre'=>'Corona de Ceniza',  'categoria'=>'RPG',        'plataforma'=>'PC',     'precio'=>1099, 'anio'=>2022, 'estudio'=>'Grey Lantern',      'desc'=>'RPG táctico con seis finales y party personalizable.'],
   8  => ['nombre'=>'Liga Estelar FC',   'categoria'=>'Deportes',   'plataforma'=>'PS5',    'precio'=>1399, 'anio'=>2026, 'estudio'=>'Kickpoint',         'desc'=>'Fútbol arcade con ligas en línea y modo carrera.'],
@@ -65,6 +65,10 @@ function portada(string $nombre, string $color = 'FF2D75'): string {
 
     if (strcasecmp($nombreNormalizado, 'Isla Mareaverde') === 0) {
         return 'Imagenes/Isla%20Mareaverde.jpg';
+    }
+
+    if (strcasecmp($nombreNormalizado, 'Fire Fire') === 0) {
+        return 'Imagenes/Fire%20Fire.jpg';
     }
 
     return 'https://placehold.co/600x800/1E1B36/' . $color . '?text=' . rawurlencode($nombre);
