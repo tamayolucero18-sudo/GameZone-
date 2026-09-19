@@ -97,7 +97,7 @@ $_SESSION['carrito'] = [];   // Vacía el carrito tras la compra.
 </main>
 
 <footer class="footer">
-  <p>GameZone — Cancún, México · Claves digitales originales</p>
+  <p>GameZone — Mérida, Yucatán · Claves digitales originales</p>
 </footer>
 </body>
 </html>
