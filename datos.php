@@ -14,17 +14,8 @@ const CATEGORIAS = ['Todos', 'Acción', 'Aventura', 'Deportes', 'RPG', 'Estrateg
 
 /** Catálogo autoritativo: los precios reales viven aquí, en el servidor. */
 $JUEGOS = [
-  1  => ['nombre'=>'Neon Vanguard',     'categoria'=>'Acción',     'compatible'=>'Samsung SM-A566E',     'precio'=>1199, 'anio'=>2025, 'estudio'=>'Volta Interactive', 'desc'=>'Bienvenido a Neon Vanguard, un juego arcade sencillo y casual diseñado para el entretenimiento rápido. Con su estilo minimalista neón y mecánicas fáciles de aprender, es una opción relajante para pasar el rato.
-
-Nos centramos en ofrecer una experiencia de juego pura y simple, sin sistemas complicados ni tutoriales extensos.
-Características principales:
-• Jugabilidad simple: Controles fáciles, aptos para todos los jugadores. Simplemente interactúa con la pantalla para jugar, ponte a prueba e intenta superar tus propios récords.
-• Diseño minimalista: Gráficos neón limpios y claros, sin menús recargados ni efectos visuales que distraigan.
-• Juega sin conexión: No se requiere conexión a internet ni Wi-Fi. Puedes abrir la aplicación y jugar en cualquier momento y lugar, lo que la hace perfecta para tus desplazamientos o viajes.
-• Aplicación ligera: Optimizada para dispositivos móviles, tiene un tamaño de archivo pequeño y no ocupará mucho espacio de almacenamiento ni agotará rápidamente la batería.
-• Respetamos tu privacidad: Valoramos tu privacidad digital. Neon Vanguard no requiere que crees una cuenta y la aplicación no solicita permisos confidenciales del dispositivo (como acceso a la cámara, el micrófono o la ubicación). Tu progreso básico en el juego se guarda localmente en tu dispositivo.
-Disfruta de una experiencia arcade tranquila y sin interrupciones.
-Soporte y contacto: Si tienes algún problema o pregunta, no dudes en contactar con nuestro equipo de soporte en: hello@guerracode.fun'],
+  1  => ['nombre'=>'Neon Vanguard',     'categoria'=>'Acción',     'plataforma'=>'Samsung SM-A566E', 'compatible'=>'Samsung SM-A566E', 'precio'=>1199, 'anio'=>2025, 'estudio'=>'Volta Interactive', 'desc'=>'Bienvenido a Neon Vanguard, un juego arcade sencillo y casual diseñado para el entretenimiento rápido. Con su estilo minimalista neón y mecánicas fáciles de aprender, es una opción relajante para pasar el rato.
+Nos centramos en ofrecer una experiencia de juego pura y simple, sin sistemas complicados ni tutoriales extensos' ],
   2  => ['nombre'=>'Ashen Kingdoms',    'categoria'=>'RPG',        'plataforma'=>'PS5',    'precio'=>1499, 'anio'=>2024, 'estudio'=>'Grey Lantern',      'desc'=>'RPG de mundo abierto con decisiones que reescriben el reino.'],
   3  => ['nombre'=>'Turbo Circuit 9',   'categoria'=>'Deportes',   'plataforma'=>'Xbox',   'precio'=>999,  'anio'=>2025, 'estudio'=>'Redline Studio',    'desc'=>'Simulador de carreras con 40 circuitos y clima dinámico.'],
   4  => ['nombre'=>'Isla Mareaverde',   'categoria'=>'Aventura',   'plataforma'=>'Switch', 'precio'=>899,  'anio'=>2023, 'estudio'=>'Coralwave',         'desc'=>'Exploración tranquila de un archipiélago lleno de secretos.'],
