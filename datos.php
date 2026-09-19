@@ -16,7 +16,7 @@ const CATEGORIAS = ['Todos', 'Acción', 'Aventura', 'Deportes', 'RPG', 'Estrateg
 $JUEGOS = [
   1  => ['nombre'=>'Neon Vanguard',     'categoria'=>'Acción',     'plataforma'=>'Samsung SM-A566E', 'compatible'=>'Samsung SM-A566E', 'precio'=>1199, 'anio'=>2025, 'estudio'=>'Volta Interactive', 'desc'=>'Bienvenido a Neon Vanguard, un juego arcade sencillo y casual diseñado para el entretenimiento rápido. Con su estilo minimalista neón y mecánicas fáciles de aprender, es una opción relajante para pasar el rato.
 Nos centramos en ofrecer una experiencia de juego pura y simple, sin sistemas complicados ni tutoriales extensos' ],
-  2  => ['nombre'=>'Ashen Kingdoms',    'categoria'=>'RPG',        'plataforma'=>'PS5',    'precio'=>1499, 'anio'=>2024, 'estudio'=>'Grey Lantern',      'desc'=>'RPG de mundo abierto con decisiones que reescriben el reino.'],
+  2  => ['nombre'=>'Ashen Kingdoms',    'categoria'=>'RPG',        'plataforma'=>'PC (Windows, macOS y Linux)',    'precio'=>1499, 'anio'=>2024, 'estudio'=>'Grey Lantern',      'desc'=>'Es una aventura RPG hecha a mano que transforma la experiencia base de Minecraft. Está completamente diseñada en torno a la exploración de nuevas dimensiones, progresión profunda de personajes, forja de equipamiento poderoso, recolección de reliquias antiguas y el enfrentamiento contra imponentes jefes y criaturas legendarias'],
   3  => ['nombre'=>'Turbo Circuit 9',   'categoria'=>'Deportes',   'plataforma'=>'Xbox',   'precio'=>999,  'anio'=>2025, 'estudio'=>'Redline Studio',    'desc'=>'Simulador de carreras con 40 circuitos y clima dinámico.'],
   4  => ['nombre'=>'Isla Mareaverde',   'categoria'=>'Aventura',   'plataforma'=>'Switch', 'precio'=>899,  'anio'=>2023, 'estudio'=>'Coralwave',         'desc'=>'Exploración tranquila de un archipiélago lleno de secretos.'],
   5  => ['nombre'=>'Dominio Táctico',   'categoria'=>'Estrategia', 'plataforma'=>'PC',     'precio'=>749,  'anio'=>2024, 'estudio'=>'Hexline Games',     'desc'=>'Estrategia por turnos sobre mapas hexagonales modulares.'],
@@ -53,6 +53,10 @@ function portada(string $nombre, string $color = 'FF2D75'): string {
 
     if (strcasecmp($nombreNormalizado, 'Neon Vanguard') === 0) {
         return 'Imagenes/Neon%20Vanguard.jpg';
+    }
+
+    if (strcasecmp($nombreNormalizado, 'Ashen Kingdoms') === 0) {
+        return 'Imagenes/Ashen%20Kingdoms.jpg';
     }
 
     return 'https://placehold.co/600x800/1E1B36/' . $color . '?text=' . rawurlencode($nombre);
