@@ -126,6 +126,7 @@ button { font: inherit; cursor: pointer; }
   font-size: .85rem;
 }
 .header__action-btn--login {
+  margin-left: auto;
   padding: .55rem .9rem;
   border: 1px solid rgba(33, 230, 193, 0.35);
   border-radius: 999px;
