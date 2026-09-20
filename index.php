@@ -53,6 +53,7 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
   <div class="header__inner">
     <a class="logo" href="index.php">Game<span>Zone</span></a>
 
+    <div class="header__utility">
       <a class="header__action-btn header__action-btn--text" href="historial.php">
         <span>Historial</span>
       </a>

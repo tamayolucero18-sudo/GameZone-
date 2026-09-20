@@ -54,6 +54,12 @@ button { font: inherit; cursor: pointer; }
   align-items: center;
   gap: 1.5rem;
 }
+.header__utility {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: clamp(2.5rem, 7vw, 8rem);
+}
 .logo { font-size: 1.7rem; font-weight: 700; flex-shrink: 0; }
 .logo span { color: var(--accent); }
 
