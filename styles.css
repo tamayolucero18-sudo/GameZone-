@@ -49,23 +49,25 @@ button { font: inherit; cursor: pointer; }
 .header__inner {
   max-width: var(--maxw);
   margin: auto;
-  padding: .85rem 1.2rem;
+  padding: .9rem 1.2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 .header__utility {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   margin-left: auto;
+  padding-left: 1.2rem;
 }
 .logo { font-size: 1.7rem; font-weight: 700; flex-shrink: 0; }
 .logo span { color: var(--accent); }
 
 /* Buscador central */
 .search { 
-  flex: 0 1 420px;
+  flex: 1 1 420px;
+  max-width: 520px;
   position: relative;
   display: flex;
   align-items: center;
@@ -125,15 +127,19 @@ button { font: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   gap: .5rem;
-  padding: .3rem 0;
-  border: none;
-  border-radius: 0;
-  background: none;
-  transition: color .2s, transform .2s;
+  padding: .45rem .25rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  transition: color .2s, transform .2s, border-color .2s, background .2s;
   text-decoration: none;
   line-height: 1;
 }
-.header__action-btn:hover { color: var(--accent-2); }
+.header__action-btn:hover {
+  color: var(--accent-2);
+  border-color: rgba(33, 230, 193, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+}
 .header__action-btn--text span {
   font-size: .95rem;
   font-weight: 500;
@@ -142,8 +148,14 @@ button { font: inherit; cursor: pointer; }
   color: var(--text);
   font-weight: 600;
   margin-left: .2rem;
+  padding: .6rem .9rem;
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.02);
 }
-.header__action-btn--login:hover { color: var(--accent-2); }
+.header__action-btn--login:hover {
+  color: var(--accent-2);
+  border-color: rgba(33, 230, 193, 0.4);
+}
 .cart-btn__count {
   position: absolute;
   top: -6px;
