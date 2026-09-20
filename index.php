@@ -66,6 +66,7 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
 
     <div class="header__utility">
       <a class="header__action-btn header__action-btn--text" href="historial.php">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <span>Historial</span>
       </a>
       <a class="header__action-btn" href="<?= url(['carrito' => 1, 'juego' => null], 'index.php', '#catalogo') ?>" aria-label="Carrito">
@@ -75,6 +76,7 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
         <?php endif; ?>
       </a>
       <a class="header__action-btn header__action-btn--text header__action-btn--login" href="<?= url(['login' => 1], 'index.php') ?>">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-8 9a4 4 0 014-4h0a4 4 0 014 4v1H8v-1z"></path></svg>
         <span>Acceder</span>
       </a>
     </div>
