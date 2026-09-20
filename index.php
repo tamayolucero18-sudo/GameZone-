@@ -7,6 +7,29 @@
 require __DIR__ . '/datos.php';
 
 /* ---------- Estado leído de la URL ---------- */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_email'])) {
+    $email = trim((string)$_POST['login_email']);
+    $password = (string)($_POST['login_password'] ?? '');
+    $accion = $_POST['login_action'] ?? 'password';
+
+    if ($email !== '' && ($accion === 'magic' || $password !== '')) {
+        $_SESSION['usuario'] = [
+            'email' => $email,
+            'nombre' => explode('@', $email)[0],
+            'logueado' => true,
+        ];
+    }
+
+    header('Location: index.php');
+    exit;
+}
+
+if (isset($_GET['logout'])) {
+    unset($_SESSION['usuario']);
+    header('Location: index.php');
+    exit;
+}
+
 $categoria    = $_GET['cat'] ?? 'Todos';
 if (!in_array($categoria, CATEGORIAS, true)) $categoria = 'Todos';
 
@@ -14,6 +37,7 @@ $busqueda     = trim((string)($_GET['q'] ?? ''));
 $juegoAbierto = isset($_GET['juego']) && isset($JUEGOS[(int)$_GET['juego']]) ? (int)$_GET['juego'] : null;
 $carritoAbierto  = isset($_GET['carrito']);
 $checkoutAbierto = isset($_GET['checkout']) && unidades() > 0;
+$usuarioActual = $_SESSION['usuario'] ?? null;
 
 /* ---------- Filtrado del catálogo (servidor) ---------- */
 $visibles = array_filter($JUEGOS, function ($j) use ($categoria, $busqueda) {
@@ -71,9 +95,15 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
           <span class="cart-btn__count"><?= unidades() ?></span>
         <?php endif; ?>
       </a>
-      <a class="header__action-btn header__action-btn--text header__action-btn--login" href="<?= url(['login' => 1], 'index.php') ?>">
-        <span>Acceder</span>
-      </a>
+      <?php if ($usuarioActual): ?>
+        <a class="header__action-btn header__action-btn--text header__action-btn--login" href="<?= url(['logout' => 1], 'index.php') ?>">
+          <span><?= e($usuarioActual['nombre']) ?></span>
+        </a>
+      <?php else: ?>
+        <a class="header__action-btn header__action-btn--text header__action-btn--login" href="<?= url(['login' => 1], 'index.php') ?>">
+          <span>Acceder</span>
+        </a>
+      <?php endif; ?>
     </div>
   </div>
 </header>
@@ -356,11 +386,12 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
           </button>
         </div>
 
-        <form method="get" action="index.php" class="login__form">
+        <form method="post" action="index.php" class="login__form">
           <label class="sr-only">Email</label>
-          <input type="email" name="email" required placeholder="Email">
-          <button class="btn btn--yellow btn--block" type="button">Obtener enlace mágico</button>
-          <button class="btn btn--ghost btn--block" type="button" style="margin-top:.8rem; border:none; border-radius:10px; color:#000; background:#fff; font-weight:600;">Iniciar sesión con contraseña</button>
+          <input type="email" name="login_email" required placeholder="Email">
+          <input type="password" name="login_password" placeholder="Contraseña" style="margin-top:.8rem;">
+          <button class="btn btn--yellow btn--block" type="submit" name="login_action" value="magic">Obtener enlace mágico</button>
+          <button class="btn btn--ghost btn--block" type="submit" name="login_action" value="password" style="margin-top:.8rem; border:none; border-radius:10px; color:#000; background:#fff; font-weight:600;">Iniciar sesión con contraseña</button>
         </form>
       </div>
     </div>
