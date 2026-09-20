@@ -57,9 +57,6 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
       <?php if ($categoria !== 'Todos'): ?>
         <input type="hidden" name="cat" value="<?= e($categoria) ?>">
       <?php endif; ?>
-      <span class="search__icon" aria-hidden="true">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-      </span>
       <input type="search" name="q" value="<?= e($busqueda) ?>"
              placeholder="Busca juegos, recargas y más" aria-label="Buscar videojuegos">
     </form>

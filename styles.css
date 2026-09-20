@@ -68,7 +68,6 @@ button { font: inherit; cursor: pointer; }
   flex: 0 1 420px;
   display: flex;
   align-items: center;
-  gap: .75rem;
   margin: 0 .5rem;
 }
 .search input {
@@ -86,15 +85,6 @@ button { font: inherit; cursor: pointer; }
   border-color: rgba(33, 230, 193, 0.7);
   background: rgba(21, 19, 39, 0.95);
   outline: none;
-}
-.search__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  width: 1.3rem;
-  height: 1.3rem;
-  flex-shrink: 0;
 }
 
 /* Acciones derecha */
