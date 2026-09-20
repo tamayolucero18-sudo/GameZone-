@@ -10,7 +10,7 @@ require __DIR__ . '/datos.php';
 $categoria    = $_GET['cat'] ?? 'Todos';
 if (!in_array($categoria, CATEGORIAS, true)) $categoria = 'Todos';
 
-$busqueda     = trim($_GET['q'] ?? '');
+$busqueda     = trim((string)($_GET['q'] ?? ''));
 $juegoAbierto = isset($_GET['juego']) && isset($JUEGOS[(int)$_GET['juego']]) ? (int)$_GET['juego'] : null;
 $carritoAbierto  = isset($_GET['carrito']);
 $checkoutAbierto = isset($_GET['checkout']) && unidades() > 0;
@@ -94,7 +94,7 @@ $tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbi
   <div class="chips">
     <?php foreach (CATEGORIAS as $c): ?>
       <a class="chip<?= $c === $categoria ? ' is-active' : '' ?>"
-         href="<?= url(['cat' => $c === 'Todos' ? null : $c, 'juego' => null], 'index.php', '#catalogo') ?>"><?= e($c) ?></a>
+         href="<?= url(['cat' => $c === 'Todos' ? null : $c, 'q' => null, 'juego' => null], 'index.php', '#catalogo') ?>"><?= e($c) ?></a>
     <?php endforeach; ?>
   </div>
 </section>
