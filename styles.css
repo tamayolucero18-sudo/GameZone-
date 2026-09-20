@@ -52,12 +52,12 @@ button { font: inherit; cursor: pointer; }
   padding: .85rem 1.2rem;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .header__utility {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1.2rem;
   margin-left: auto;
 }
 .logo { font-size: 1.7rem; font-weight: 700; flex-shrink: 0; }
@@ -65,10 +65,11 @@ button { font: inherit; cursor: pointer; }
 
 /* Buscador central */
 .search { 
-  flex: 1; 
+  flex: 0 1 420px;
   position: relative;
   display: flex;
   align-items: center;
+  margin: 0 .5rem;
 }
 .search input {
   width: 100%;
