@@ -73,7 +73,7 @@ button { font: inherit; cursor: pointer; }
 }
 .search input {
   width: 100%;
-  padding: .7rem 2.8rem .7rem 1rem;
+  padding: .7rem 2.8rem .7rem 2.8rem;
   border-radius: 10px;
   border: 1px solid var(--line);
   background: rgba(30, 27, 54, 0.85);
@@ -89,7 +89,7 @@ button { font: inherit; cursor: pointer; }
 }
 .search__icon {
   position: absolute;
-  right: .9rem;
+  left: .9rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted);
