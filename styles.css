@@ -64,16 +64,16 @@ button { font: inherit; cursor: pointer; }
 .logo span { color: var(--accent); }
 
 /* Buscador central */
-.search { 
+.search {
   flex: 0 1 420px;
-  position: relative;
   display: flex;
   align-items: center;
+  gap: .75rem;
   margin: 0 .5rem;
 }
 .search input {
   width: 100%;
-  padding: .7rem 2.8rem .7rem 2.8rem;
+  padding: .7rem 1rem;
   border-radius: 10px;
   border: 1px solid var(--line);
   background: rgba(30, 27, 54, 0.85);
@@ -88,17 +88,13 @@ button { font: inherit; cursor: pointer; }
   outline: none;
 }
 .search__icon {
-  position: absolute;
-  left: .9rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
-  width: 1.2rem;
-  height: 1.2rem;
+  color: var(--muted);
+  width: 1.3rem;
+  height: 1.3rem;
+  flex-shrink: 0;
 }
 
 /* Acciones derecha */
