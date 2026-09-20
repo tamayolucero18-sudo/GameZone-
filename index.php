@@ -40,31 +40,50 @@ $volver = 'index.php?' . http_build_query(array_filter([
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<?php
+$configAbierto = isset($_GET['config']);
+$deseosAbierto = isset($_GET['deseos']);
+$loginAbierto  = isset($_GET['login']);
+$tieneModal = $juegoAbierto || $carritoAbierto || $checkoutAbierto || $configAbierto || $deseosAbierto || $loginAbierto;
+?>
+<body class="<?= $tieneModal ? 'modal-open' : '' ?>">
 
 <!-- ============ HEADER ============ -->
 <header class="header">
   <div class="header__inner">
     <a class="logo" href="index.php">Game<span>Zone</span></a>
 
-    <nav class="nav" aria-label="Principal">
-      <a href="index.php">Inicio</a>
-      <a href="<?= url([], 'index.php', '#catalogo') ?>">Catálogo</a>
-      <a href="<?= url([], 'index.php', '#categorias') ?>">Categorías</a>
-      <a href="historial.php">Historial</a>
-    </nav>
-
     <form class="search" method="get" action="index.php" role="search">
       <?php if ($categoria !== 'Todos'): ?>
         <input type="hidden" name="cat" value="<?= e($categoria) ?>">
       <?php endif; ?>
+      <span class="search__icon">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </span>
       <input type="search" name="q" value="<?= e($busqueda) ?>"
-             placeholder="Buscar un juego…" aria-label="Buscar videojuegos">
+             placeholder="Busca juegos, recargas y más" aria-label="Buscar videojuegos">
     </form>
 
-    <a class="cart-btn" href="<?= url(['carrito' => 1, 'juego' => null], 'index.php', '#catalogo') ?>">
-      Carrito <span class="cart-btn__count"><?= unidades() ?></span>
-    </a>
+      <div class="header__lang">
+        <a href="<?= url(['config' => 1], 'index.php') ?>" style="display:flex; align-items:center; gap:0.4rem; color:inherit; text-decoration:none;">🇲🇽 Español Latinoamericano <span>| USD</span></a>
+      </div>
+      <a class="header__action-btn header__action-btn--text" href="historial.php">
+        <span>Historial</span>
+      </a>
+      <a class="header__action-btn" href="<?= url(['deseos' => 1], 'index.php') ?>" aria-label="Favoritos">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+      </a>
+      <a class="header__action-btn" href="<?= url(['carrito' => 1, 'juego' => null], 'index.php', '#catalogo') ?>" aria-label="Carrito">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <?php if (unidades() > 0): ?>
+          <span class="cart-btn__count"><?= unidades() ?></span>
+        <?php endif; ?>
+      </a>
+      <a class="header__action-btn header__action-btn--text" href="<?= url(['login' => 1], 'index.php') ?>">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        <span>Iniciar sesión | Registrarse</span>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -74,10 +93,7 @@ $volver = 'index.php?' . http_build_query(array_filter([
     <p class="hero__kicker">Entrega digital inmediata</p>
     <h1>Tu próxima partida empieza aquí</h1>
     <p class="hero__text">Más de 20 títulos para PC, PS5, Xbox y Switch. Claves originales, activación en minutos y soporte en español.</p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="#catalogo">Ver catálogo</a>
-      <a class="btn btn--ghost" href="#categorias">Explorar categorías</a>
-    </div>
+
     <ul class="hero__stats">
       <li><strong><?= count($JUEGOS) ?></strong> títulos disponibles</li>
       <li><strong>4</strong> plataformas</li>
@@ -264,6 +280,104 @@ $volver = 'index.php?' . http_build_query(array_filter([
   </div>
 </div>
 <?php endif; ?>
+
+<!-- ============ MODAL: CONFIGURACIÓN ============ -->
+<?php if ($configAbierto): ?>
+<div class="modal" role="dialog" aria-modal="true" aria-label="Configuración">
+  <div class="modal__box modal__box--config">
+    <a class="modal__close" href="<?= url(['config' => null], 'index.php') ?>" aria-label="Cerrar">×</a>
+    <h3>Actualiza tu configuración</h3>
+    <p class="form__resumen" style="border:0; margin-bottom: 1.5rem; padding:0;">Establece tu región preferida, idioma y moneda preferida.</p>
+    <form method="get" action="index.php">
+      <label>Región
+        <select name="region">
+          <option value="MX" selected>🇲🇽 México</option>
+        </select>
+      </label>
+      <label>Idioma
+        <select name="idioma">
+          <option value="es-419" selected>Español Latinoamericano</option>
+        </select>
+      </label>
+      <label>Moneda
+        <select name="moneda">
+          <option value="MXN" selected>Peso mexicano (MXN)</option>
+        </select>
+      </label>
+      <div class="config__actions">
+        <a class="btn btn--ghost" href="<?= url(['config' => null], 'index.php') ?>">Cancelar</a>
+        <button class="btn btn--yellow" type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<?php endif; ?>
+
+<!-- ============ DRAWER: LISTA DE DESEOS ============ -->
+<?php if ($deseosAbierto): ?>
+<a class="overlay" href="<?= url(['deseos' => null], 'index.php') ?>" aria-label="Cerrar deseos"></a>
+<aside class="drawer drawer--deseos" aria-label="Lista de deseos">
+  <div class="drawer__head">
+    <h2>Lista de deseos</h2>
+    <a class="modal__close" href="<?= url(['deseos' => null], 'index.php') ?>" aria-label="Cerrar">×</a>
+  </div>
+  <div class="drawer__notice">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+    <p>Configura notificaciones por correo electrónico cuando el precio baje para cualquiera de tus productos incluidos en la lista de deseos. <a href="<?= url(['login' => 1, 'deseos' => null], 'index.php') ?>">Iniciar sesión</a> o Regístrate</p>
+  </div>
+  <div class="drawer__items" style="align-items: center; justify-content: center;">
+    <div class="deseos__vacio">
+      <div class="deseos__icon">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+      </div>
+      <p>Todavía no tienes productos en la Lista de deseos.</p>
+      <strong>Añade juegos a la Lista de deseos y aparecerán aquí.</strong>
+    </div>
+  </div>
+</aside>
+<?php endif; ?>
+
+<!-- ============ MODAL: LOGIN ============ -->
+<?php if ($loginAbierto): ?>
+<div class="modal modal--login-overlay" role="dialog" aria-modal="true" aria-label="Iniciar sesión">
+  <div class="modal__box modal__box--login">
+    <a class="modal__close" href="<?= url(['login' => null], 'index.php') ?>" aria-label="Cerrar">×</a>
+    
+    <div class="login-layout">
+      <!-- Columna Izquierda -->
+      <div class="login-layout__left">
+        <a class="logo logo--login" href="index.php">Game<span>Zone</span></a>
+        <h1 class="login__greeting">¡Hola!<br>¡Qué gusto<br>verte!</h1>
+      </div>
+      <!-- Columna Derecha -->
+      <div class="login-layout__right">
+        <h2>Iniciar sesión</h2>
+        <p class="login__subtitle">¿Nuevo usuario? <a href="#">Crear una cuenta</a></p>
+        
+        <div class="login__social">
+          <button class="btn-social btn-social--google">
+            <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Continuar con Google
+          </button>
+          <button class="btn-social btn-social--facebook">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            Continuar con Facebook
+          </button>
+        </div>
+
+        <form method="get" action="index.php" class="login__form">
+          <label class="sr-only">Email</label>
+          <input type="email" name="email" required placeholder="Email">
+          <button class="btn btn--yellow btn--block" type="button">Obtener enlace mágico</button>
+          <button class="btn btn--ghost btn--block" type="button" style="margin-top:.8rem; border:none; border-radius:10px; color:#000; background:#fff; font-weight:600;">Iniciar sesión con contraseña</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+
+
 
 <footer class="footer">
   <p>GameZone — Mérida, Yucatán · Claves digitales originales</p>

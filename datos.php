@@ -30,11 +30,11 @@ Nos centramos en ofrecer una experiencia de juego pura y simple, sin sistemas co
   13 => ['nombre'=>'Dinastía Arcana',   'categoria'=>'RPG',        'plataforma'=>'Switch', 'precio'=>1049, 'anio'=>2025, 'estudio'=>'Moonforge',         'desc'=>'Un RPG clásico donde el origen de tu sangre define el destino del reino. Despierta el poder de linajes olvidados y embárcate en una aventura épica de combate táctico por turnos. Explora tierras ancestrales, domina la magia elemental y combina las habilidades de tu escuadrón para derrocar a las fuerzas oscuras que amenazan con consumirlo todo.'],
   14 => ['nombre'=>'Imperio de Hierro', 'categoria'=>'Estrategia', 'plataforma'=>'PC',     'precio'=>849,  'anio'=>2024, 'estudio'=>'Forgeworks',        'desc'=>'Declara el trono. Construye el imperio. Domina la guerra. Enfréntate al caos en un juego de estrategia en tiempo real donde la maquinaria de guerra y la supremacía militar lo son todo. Construye fortalezas inexpugnables, gestiona tus recursos y lidera legiones acorazadas en campos de batalla masivos para reclamar el control total del mapa.'],
   15 => ['nombre'=>'Frontera Roja',     'categoria'=>'Estrategia', 'plataforma'=>'PC',     'precio'=>929,  'anio'=>2025, 'estudio'=>'Hexline Games',     'desc'=>'En Frontera Roja, el verdadero enemigo no siempre viste el uniforme contrario: es la falta de munición, la escasez de combustible y el pánico que se extiende entre tus filas. Lidera combates tácticos en tiempo real donde trazar rutas de reabastecimiento bajo fuego pesado y monitorear la moral de tu escuadrón es la única diferencia entre la victoria y el colapso total. Un batallón sin suministros o al borde del colapso mental abandonará la línea antes de apretar el primer gatillo.'],
-  16 => ['nombre'=>'Último Tren',       'categoria'=>'Aventura',   'plataforma'=>'PC',     'precio'=>599,  'anio'=>2023, 'estudio'=>'Slowlight',         'desc'=>'Thriller de misterio en un vagón que nunca se detiene.'],
-  17 => ['nombre'=>'Garra de Titán',    'categoria'=>'Acción',     'plataforma'=>'PS5',    'precio'=>1349, 'anio'=>2026, 'estudio'=>'Nocturn',           'desc'=>'Duelos colosales contra jefes de cien metros.'],
-  18 => ['nombre'=>'Códice Perdido',    'categoria'=>'RPG',        'plataforma'=>'Xbox',   'precio'=>1149, 'anio'=>2024, 'estudio'=>'Moonforge',         'desc'=>'RPG de exploración con hechizos que se escriben a mano.'],
-  19 => ['nombre'=>'Pista Blanca',      'categoria'=>'Deportes',   'plataforma'=>'Switch', 'precio'=>699,  'anio'=>2022, 'estudio'=>'Redline Studio',    'desc'=>'Snowboard arcade con descensos procedurales.'],
-  20 => ['nombre'=>'Colonia Orbital',   'categoria'=>'Estrategia', 'plataforma'=>'PS5',    'precio'=>989,  'anio'=>2026, 'estudio'=>'Forgeworks',        'desc'=>'Gestiona una colonia espacial al límite de sus recursos.'],
+  16 => ['nombre'=>'DOOM Eternal',           'categoria'=>'Acción',     'plataforma'=>'PC, PS5, Xbox', 'precio'=>799,  'anio'=>2020, 'estudio'=>'id Software',       'desc'=>'Experimenta la combinación definitiva de velocidad y poder en este vertiginoso juego de disparos en primera persona. Como el Slayer, regresa a la Tierra para acabar con una invasión demoníaca usando un arsenal devastador de armas, lanzallamas y la mítica motosierra. El combate te exige estar en constante movimiento y ser agresivo para recuperar salud, armadura y munición de tus enemigos caídos.'],
+  17 => ['nombre'=>'Red Dead Redemption 2', 'categoria'=>'Aventura',   'plataforma'=>'PC, PS4, Xbox', 'precio'=>1299, 'anio'=>2018, 'estudio'=>'Rockstar Games',  'desc'=>'Una épica historia sobre la vida en Estados Unidos en los albores del siglo XX. Sigue a Arthur Morgan y la banda de Van der Linde mientras huyen de la ley a través de un vasto e implacable territorio, robando y luchando para sobrevivir en el corazón de América en declive. El juego ofrece un mundo abierto enormemente detallado e inmersivo.'],
+  18 => ['nombre'=>'Baldur\'s Gate 3',      'categoria'=>'RPG',        'plataforma'=>'PC, PS5, Xbox', 'precio'=>1399, 'anio'=>2023, 'estudio'=>'Larian Studios',  'desc'=>'Reúne a tu grupo y regresa a los Reinos Olvidados en un relato de compañerismo y traición, sacrificio y supervivencia, y la tentación del poder absoluto. Basado en el mundo de Dungeons & Dragons, ofrece una narrativa rica con decisiones que alteran la historia, un profundo combate táctico por turnos y una libertad sin precedentes para explorar y experimentar.'],
+  19 => ['nombre'=>'Forza Horizon 5',       'categoria'=>'Deportes',   'plataforma'=>'PC, Xbox',      'precio'=>1499, 'anio'=>2021, 'estudio'=>'Playground Games', 'desc'=>'Lidera impresionantes expediciones a través de los vibrantes y cambiantes paisajes de mundo abierto de México, con una acción de conducción ilimitada y divertida en cientos de los mejores coches del mundo. Explora selvas, ciudades históricas, ruinas, playas escondidas y un enorme volcán cubierto de nieve.'],
+  20 => ['nombre'=>'Civilization VI',       'categoria'=>'Estrategia', 'plataforma'=>'PC, Switch',    'precio'=>1199, 'anio'=>2016, 'estudio'=>'Firaxis Games',   'desc'=>'Un juego de estrategia por turnos en el que tu objetivo es construir un imperio que resista el paso del tiempo. Explora un nuevo mundo, investiga tecnologías, conquista a tus enemigos y enfréntate a los líderes históricos más famosos mientras intentas llevar a tu civilización desde la Edad de Piedra hasta la Era de la Información.'],
 ];
 
 /** Escapa texto antes de imprimirlo en el HTML. */
@@ -101,6 +101,21 @@ function portada(string $nombre, string $color = 'FF2D75'): string {
     }
     if (strcasecmp($nombreNormalizado, 'Frontera Roja') === 0) {
         return 'Imagenes/Frontera%20Roja.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'DOOM Eternal') === 0) {
+        return 'Imagenes/DOOM_Eternal.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Red Dead Redemption 2') === 0) {
+        return 'Imagenes/Red_Dead_Redemption_2.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Baldur\'s Gate 3') === 0) {
+        return 'Imagenes/Baldurs_Gate_3.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Forza Horizon 5') === 0) {
+        return 'Imagenes/Forza_Horizon_5.jpg';
+    }
+    if (strcasecmp($nombreNormalizado, 'Civilization VI') === 0) {
+        return 'Imagenes/Civilization_VI.jpg';
     }
     return 'https://placehold.co/600x800/1E1B36/' . $color . '?text=' . rawurlencode($nombre);
 }
